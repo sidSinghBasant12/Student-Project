@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Analytics Report | SPIS</title>
+  <link rel="stylesheet" href="assests/style.css">
+</head>
+
+<body class="report-page">
+
+  <!-- HEADER -->
+  <header class="header student-header">
+    <h1>Performance Analytics Report</h1>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
+
+  <section class="cards report-cards">
+  <div class="card">
+    <h3>Average Marks</h3>
+    <p id="repAvgMarks">--</p>
+  </div>
+
+  <div class="card">
+    <h3>Pass Percentage</h3>
+    <p id="repPass">--</p>
+  </div>
+
+  <div class="card">
+    <h3>Top Performer</h3>
+    <p id="repTopper">--</p>
+  </div>
+
+  <div class="card">
+    <h3>Subjects Analyzed</h3>
+    <p id="repSubjects">5</p>
+  </div>
+</section>
+
+
+  <!-- CHARTS SECTION -->
+  <section class="charts">
+    <div class="chartBox">
+      <h3>Average Marks by Subject</h3>
+      <canvas id="subjectChart"></canvas>
+    </div>
+    <div class="chartBox">
+      <h3>Monthly Performance Trend</h3>
+      <canvas id="trendChart"></canvas>
+    </div>
+    <div class="chartBox">
+      <h3>Attendance Ratio</h3>
+      <canvas id="attendancePie"></canvas>
+    </div>
+    <div class="chartBox">
+      <h3>Gender-wise Performance</h3>
+      <canvas id="genderChart"></canvas>
+    </div>
+  </section>
+
+ <!-- INSIGHTS SECTION -->
+<section class="insights-section">
+  <h3>&#x1F4CA; Insights Summary</h3>
+  <div class="insight-box">
+    <p>
+      <span class="highlight">&#x2728; Overall Growth:</span> Student performance improved <b>15%</b> this semester,
+      with consistent attendance and higher subject averages.
+    </p>
+    <p>
+      <span class="highlight">&#x1F4A1; Top Scorers:</span> <b>Cloud Computing</b> (88%) and <b>Data Analytics</b> (82%) 
+      are leading subjects in the current term.
+    </p>
+    <p>
+      <span class="highlight">&#x1F3AF; Key Observation:</span> Female students outperform male students by nearly <b>8%</b>,
+      indicating strong engagement and participation.
+    </p>
+    <p>
+      <span class="highlight">&#x1F4D8; Suggestion:</span> Focus additional practice on <b>DBMS</b> and <b>AI & ML</b> to balance performance across all subjects.
+    </p>
+  </div>
+</section>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Student Performance Insight System | SDG Goal 4 – Quality Education
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assests/main.js"></script>
+</body>
+</html>
