@@ -1,8 +1,10 @@
+import os
 from flask import request, jsonify
 from flask_cors import CORS
 from db import app, mysql
 
-CORS(app)
+allowed_origins = os.environ.get("CORS_ORIGINS", "http://127.0.0.1:5000,http://localhost:5000").split(",")
+CORS(app, origins=allowed_origins)
 
 
 @app.route("/")
@@ -102,6 +104,7 @@ def delete_student(roll_no):
     return jsonify({"message": "Student deleted successfully"})
 
 
-# ✅ RUN SERVER (SIRF EK JAGAH)
+# ✅ RUN SERVER
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)

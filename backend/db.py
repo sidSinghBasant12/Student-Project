@@ -4,13 +4,12 @@ from flask import Flask, g
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
 
-# Database Configurations
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'rohan'
-app.config['MYSQL_DB'] = 'student_insight'
+# Database Configurations (use environment variables for production)
+app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST', 'localhost')
+app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER', 'root')
+app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD', 'rohan')
+app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB', 'student_insight')
 
 class CursorWrapper:
     def __init__(self, cursor, is_sqlite):
@@ -49,7 +48,7 @@ class ConnectionWrapper:
 class DatabaseManager:
     def __init__(self, app=None):
         self.db_type = 'sqlite' # Default fallback
-        self.sqlite_db_path = os.path.join(os.path.dirname(__file__), 'student_insight.db')
+        self.sqlite_db_path = os.environ.get('SQLITE_DB_PATH', os.path.join(os.path.dirname(__file__), 'student_insight.db'))
         if app:
             self.init_app(app)
 
