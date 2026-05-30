@@ -11,4 +11,4 @@ services:
     rootDir: backend
     envVars:
       - key: CORS_ORIGINS
-        value: https://sidharthstudent.netlify.app
+        value: https://sidharthstudent.netlify.app,https://sidsinghbasant12.github.io
