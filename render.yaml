@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: student-insight-backend
+    env: python
+    region: ohio
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2
+    healthCheckPath: /
+    plan: free
+    branch: main
+    rootDir: backend
+    envVars:
+      - key: CORS_ORIGINS
+        value: https://sidharthstudent.netlify.app
