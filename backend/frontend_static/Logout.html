@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout | Student Insight Performance System</title>
+  <link rel="stylesheet" href="assests/style.css">
+</head>
+
+<body class="contact-page">
+
+  <!-- HEADER -->
+  <header class="header student-header">
+    <h1>Logout</h1>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
+
+  <!-- LOGOUT SECTION -->
+  <section class="contact-section">
+    <div class="contact-left">
+      <h2>Thank You!</h2>
+      <p>You have been successfully logged out of the Student Insight Performance System.  
+         Redirecting you to the login page...</p>
+    </div>
+
+    <div class="contact-right">
+      <img src="assests/images/contact.jpg" alt="Logout Illustration">
+      
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Student Performance Insight System | SDG Goal 4 – Quality Education
+  </footer>
+
+  <script>
+    localStorage.removeItem("isLoggedIn");
+    setTimeout(function() {
+      window.location.href = "Login.html";
+    }, 3000);
+  </script>
+
+</body>
+</html>

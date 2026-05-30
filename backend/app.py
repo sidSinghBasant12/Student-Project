@@ -3,13 +3,32 @@ from flask import request, jsonify
 from flask_cors import CORS
 from db import app, mysql
 
-allowed_origins = os.environ.get("CORS_ORIGINS", "http://127.0.0.1:5000,http://localhost:5000,https://sidharthstudent.netlify.app,https://sidsinghbasant12.github.io").split(",")
+# Determine frontend folder path (relative to this file)
+FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend_static")
+
+allowed_origins = os.environ.get("CORS_ORIGINS", "http://127.0.0.1:5000,http://localhost:5000").split(",")
 CORS(app, origins=allowed_origins)
 
 
-@app.route("/")
-def home():
-    return "Student Insight Backend Running Successfully ✅"
+@app.route("/", defaults={"path": "index.html"})
+@app.route("/<path:path>")
+def serve_frontend(path):
+    # Never intercept API routes
+    if path in ("students", "add-student", "update-marks") or path.startswith("delete-student"):
+        return {"error": "Not found"}, 404
+    filepath = os.path.join(FRONTEND_DIR, path)
+    if not os.path.exists(filepath) or os.path.isdir(filepath):
+        filepath = os.path.join(FRONTEND_DIR, "index.html")
+    if not os.path.exists(filepath):
+        return "Student Insight Backend Running Successfully ✅"
+    ext = os.path.splitext(filepath)[1]
+    mime = {"": "text/html", ".html": "text/html", ".css": "text/css", ".js": "application/javascript", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon"}
+    with open(filepath, "r" if ext in ("", ".html", ".css", ".js", ".svg") else "rb") as f:
+        data = f.read()
+    ct = mime.get(ext, "application/octet-stream")
+    if isinstance(data, str):
+        return data, 200, {"Content-Type": ct}
+    return data, 200, {"Content-Type": ct}
 
 @app.route("/students", methods=["GET"])
 def get_students():

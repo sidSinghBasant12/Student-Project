@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Details | SPIS</title>
+  <link rel="stylesheet" href="assests/style.css">
+</head>
+
+<body class="student-page">
+
+  <!-- HEADER -->
+  <header class="header student-header">
+    <h1>Student Performance Details</h1>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
+
+  <!-- PROFILE SECTION -->
+  <section class="student-container">
+    <div class="student-left">
+      <img src="assests/images/student1.jpg" alt="Student Photo" class="profile-pic">
+      <h2 id="stuName">Loading...</h2>
+<p><strong>Roll No:</strong> <span id="stuRoll"></span></p>
+<p><strong>Class:</strong> <span id="stuClass"></span></p>
+<p><strong>Attendance:</strong> <span id="stuAtt">--</span></p>
+<p><strong>Overall Grade:</strong> <span id="stuGrade">--</span></p>
+
+    </div>
+
+    <div class="student-right">
+      <h3>Subject-wise Marks</h3>
+      <table class="marks-table">
+        <thead>
+          <tr><th>Subject</th><th>Marks</th></tr>
+        </thead>
+        <tbody id="marksTableBody">
+          <tr><td>Python</td><td>85</td></tr>
+          <tr><td>Data Analytics</td><td>88</td></tr>
+          <tr><td>AI & ML</td><td>80</td></tr>
+          <tr><td>DBMS</td><td>78</td></tr>
+          <tr><td>Cloud Computing</td><td>90</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CHART SECTION -->
+  <section class="chart-section">
+    <h3>Performance Overview (Bar Graph)</h3>
+    <canvas id="studentChart"></canvas>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Student Performance Insight System | SDG Goal 4 – Quality Education
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assests/main.js"></script>
+</body>
+</html>
