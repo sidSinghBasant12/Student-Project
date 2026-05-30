@@ -220,6 +220,138 @@ th{
   }
 }
 
+@media(max-width:600px){
+  body{
+    flex-direction:column;
+  }
+  .sidebar{
+    display:none;
+  }
+  .main{
+    width:100%;
+  }
+  .fancy-header{
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+    padding:12px;
+  }
+  .fancy-header h1{
+    font-size:16px;
+  }
+  .header-right{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .nav-btn{
+    font-size:12px;
+    padding:5px 10px;
+  }
+  .cards{
+    grid-template-columns:1fr;
+    padding:10px;
+  }
+  .card{
+    padding:12px;
+  }
+  .charts{
+    padding:10px;
+  }
+  .chartBox{
+    height:auto;
+    padding:10px;
+  }
+  .table-section{
+    margin:0 10px 10px;
+    padding:10px;
+    overflow-x:auto;
+  }
+  th,td{
+    padding:6px 8px;
+    font-size:12px;
+  }
+  .footer{
+    font-size:11px;
+    padding:8px;
+  }
+  .login-box{
+    width:90%;
+    padding:25px 20px;
+  }
+  .login-box h1{
+    font-size:28px;
+  }
+  .about-section{
+    flex-direction:column;
+    margin:15px;
+    padding:15px;
+  }
+  .about-left{
+    flex:auto;
+    width:100%;
+  }
+  .about-right{
+    text-align:center;
+  }
+  .contact-section{
+    flex-direction:column;
+    margin:15px;
+    padding:15px;
+  }
+  .contact-right{
+    flex:auto;
+    width:100%;
+  }
+  .student-container{
+    flex-direction:column;
+    margin:10px;
+    padding:15px;
+  }
+  .student-left{
+    width:100%;
+  }
+  .student-right{
+    width:100%;
+  }
+  .student-header{
+    flex-direction:column;
+    gap:8px;
+    text-align:center;
+    padding:12px;
+  }
+  .admin-form-section, .admin-table-section{
+    margin:15px;
+    padding:15px;
+  }
+  #studentForm{
+    flex-direction:column;
+  }
+  #studentForm input{
+    min-width:auto;
+    width:100%;
+  }
+  .report-cards{
+    padding:10px;
+  }
+  .teacher-cards{
+    padding:10px;
+  }
+  .teacher-table{
+    overflow-x:auto;
+  }
+  .insights-section{
+    margin:10px;
+    padding:15px;
+  }
+  .chart-section{
+    margin:10px;
+    padding:10px;
+  }
+  .profile-card{
+    padding:15px;
+  }
+}
+
 
 /* ========= STUDENT PAGE STYLING ========= */
 .student-header{
