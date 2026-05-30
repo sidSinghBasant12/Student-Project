@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Insight Dashboard</title>
+  <link rel="stylesheet" href="assests/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <script>
+  if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "login.html";
+  }
+</script>
+
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assests/images/logo.png" alt="Logo">
+      <h2>SPIS</h2>
+    </div>
+    <nav>
+    <a class="active" href="index.html">&#x1F4CA; Dashboard</a>
+<a href="Student.html">&#x1F469;&#x200D;&#x1F393; Students</a>
+<a href="Report.html">&#x1F4C8; Reports</a>
+<a href="Login.html">&#x1F511; Login</a>
+<a href="Teacher.html">&#x1F469;&#x200D;&#x1F3EB; Teacher</a>
+<a href="About.html">&#x2139;&#xFE0F; About</a>
+<a href="Admin.html">&#x1F6E0;&#xFE0F; Admin</a>
+<a href="Contact.html">&#x2709;&#xFE0F; Contact</a>
+<a href="Profile.html">&#128100; Profile</a>
+<a href="Logout.html">&#x1F511; Logout</a>
+
+
+    </nav>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="main">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <h1>Student Performance Insight System</h1>
+    <input type="text" id="searchBar" placeholder="Search student by name or ID...">
+
+    </header>
+
+    <!-- CARDS -->
+    <section class="cards">
+      <div class="card">
+        <h3>Average Score</h3>
+        <p id="avgScore" style="color:#004aad;font-size:40px;font-weight:bold;">--</p> 
+
+      </div>
+      <div class="card">
+        <h3>Average Attendance</h3>
+        <p id="avgAtt">--</p>
+      </div>
+      <div class="card">
+        <h3>Top Performers</h3>
+        <p id="topPerformers">--</p>
+      </div>
+      <div class="card">
+        <h3>Total Students</h3>
+        <p id="totalStudents">--</p>
+      </div>
+    </section>
+
+    <!-- CHARTS -->
+    <section class="charts">
+      <div class="chartBox">
+        <h3>Performance Trend</h3>
+        <canvas id="scoreChart"></canvas>
+      </div>
+      <div class="chartBox">
+        <h3>Attendance Distribution</h3>
+        <canvas id="attendanceChart"></canvas>
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section class="table-section">
+      <h3>Recent Students Overview</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Average Score</th>
+          </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+      </table>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+    © 2025 Student Performance Insight System | SDG Goal 4: Quality Education
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+  <script src="assests/main.js"></script>
+</body>
+</html>
