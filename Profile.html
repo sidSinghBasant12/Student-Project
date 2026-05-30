@@ -221,7 +221,10 @@ if (!rollNo) {
   document.getElementById("sp_name").innerText = "No Student Selected";
 } else {
 
-  fetch("http://127.0.0.1:5000/students")
+  const API_BASE = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+    ? "http://127.0.0.1:5000"
+    : "https://student-insight-backend.onrender.com";
+  fetch(API_BASE + "/students")
     .then(res => res.json())
     .then(data => {
 
