@@ -10,26 +10,6 @@ allowed_origins = os.environ.get("CORS_ORIGINS", "http://127.0.0.1:5000,http://l
 CORS(app, origins=allowed_origins)
 
 
-@app.route("/", defaults={"path": "index.html"})
-@app.route("/<path:path>")
-def serve_frontend(path):
-    # Never intercept API routes
-    if path in ("students", "add-student", "update-marks") or path.startswith("delete-student"):
-        return {"error": "Not found"}, 404
-    filepath = os.path.join(FRONTEND_DIR, path)
-    if not os.path.exists(filepath) or os.path.isdir(filepath):
-        filepath = os.path.join(FRONTEND_DIR, "index.html")
-    if not os.path.exists(filepath):
-        return "Student Insight Backend Running Successfully ✅"
-    ext = os.path.splitext(filepath)[1]
-    mime = {"": "text/html", ".html": "text/html", ".css": "text/css", ".js": "application/javascript", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon"}
-    with open(filepath, "r" if ext in ("", ".html", ".css", ".js", ".svg") else "rb") as f:
-        data = f.read()
-    ct = mime.get(ext, "application/octet-stream")
-    if isinstance(data, str):
-        return data, 200, {"Content-Type": ct}
-    return data, 200, {"Content-Type": ct}
-
 @app.route("/students", methods=["GET"])
 def get_students():
     cur = mysql.connection.cursor()
@@ -122,6 +102,24 @@ def delete_student(roll_no):
 
     return jsonify({"message": "Student deleted successfully"})
 
+
+# ✅ SERVE FRONTEND (catch-all — defined last so API routes take priority)
+@app.route("/", defaults={"path": "index.html"})
+@app.route("/<path:path>")
+def serve_frontend(path):
+    filepath = os.path.join(FRONTEND_DIR, path)
+    if not os.path.exists(filepath) or os.path.isdir(filepath):
+        filepath = os.path.join(FRONTEND_DIR, "index.html")
+    if not os.path.exists(filepath):
+        return "Student Insight Backend Running Successfully ✅"
+    ext = os.path.splitext(filepath)[1]
+    mime = {"": "text/html", ".html": "text/html", ".css": "text/css", ".js": "application/javascript", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon"}
+    with open(filepath, "r" if ext in ("", ".html", ".css", ".js", ".svg") else "rb") as f:
+        data = f.read()
+    ct = mime.get(ext, "application/octet-stream")
+    if isinstance(data, str):
+        return data, 200, {"Content-Type": ct}
+    return data, 200, {"Content-Type": ct}
 
 # ✅ RUN SERVER
 if __name__ == "__main__":
