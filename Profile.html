@@ -223,7 +223,7 @@ if (!rollNo) {
 
   const API_BASE = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
     ? "http://127.0.0.1:5000"
-    : "https://student-insight-backend.onrender.com";
+    : "https://my-backend-api-e5wi.onrender.com";
   fetch(API_BASE + "/students")
     .then(res => res.json())
     .then(data => {
