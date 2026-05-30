@@ -3,7 +3,7 @@ from flask import request, jsonify
 from flask_cors import CORS
 from db import app, mysql
 
-allowed_origins = os.environ.get("CORS_ORIGINS", "http://127.0.0.1:5000,http://localhost:5000,https://sidharthstudent.netlify.app").split(",")
+allowed_origins = os.environ.get("CORS_ORIGINS", "http://127.0.0.1:5000,http://localhost:5000,https://sidharthstudent.netlify.app,https://sidsinghbasant12.github.io").split(",")
 CORS(app, origins=allowed_origins)
 
 
