@@ -1,9 +1,11 @@
+const API_BASE = "https://my-backend-api-e5wi.onrender.com";
+
 // =========================================================
 // ================== DASHBOARD PAGE ========================
 // ======= DASHBOARD FETCH (ROBUST + DEBUG) =======
 if (document.getElementById('avgScore')) {
 
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => {
             if (!res.ok) throw new Error('Network response not ok: ' + res.status);
             return res.json();
@@ -134,7 +136,7 @@ let allStudents = [];  // store data globally
 
 // When page loads, fetch students
 if (document.getElementById("studentTableBody")) {
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => res.json())
         .then(data => {
             allStudents = data;   // save all data
@@ -168,7 +170,7 @@ function displayStudents(list) {
 
 // Load students when table exists
 if (document.getElementById("studentTable")) {
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => res.json())
         .then(data => {
             allStudents = data;
@@ -216,7 +218,7 @@ if (document.getElementById("stuName")) {
     const params = new URLSearchParams(window.location.search);
     const rollNo = params.get("roll");
 
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => res.json())
         .then(data => {
 
@@ -384,7 +386,7 @@ if (document.getElementById('genderChart')) {
 
 if (document.getElementById("totalStudents")) {
 
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => res.json())
         .then(data => {
 
@@ -416,7 +418,7 @@ if (document.getElementById("totalStudents")) {
 
 if (document.getElementById('teacherTableBody')) {
 
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => res.json())
         .then(data => {
 
@@ -521,7 +523,7 @@ document.getElementById("closeBtn").onclick = () => {
 // SAVE BUTTON
 document.getElementById("saveBtn").onclick = () => {
 
-    fetch("http://127.0.0.1:5000/update-marks", {
+    fetch(`${API_BASE}/update-marks`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -544,7 +546,7 @@ document.getElementById("saveBtn").onclick = () => {
 function removeStudent(roll) {
     if (!confirm("Delete this student?")) return;
 
-    fetch(`http://127.0.0.1:5000/delete-student/${roll}`, {
+    fetch(`${API_BASE}/delete-student/${roll}`, {
         method: "DELETE"
     })
         .then(res => res.json())
@@ -560,7 +562,7 @@ function removeStudent(roll) {
 function removeStudent(roll) {
     if (!confirm("Delete this student?")) return;
 
-    fetch(`http://127.0.0.1:5000/delete-student/${roll}`, {
+    fetch(`${API_BASE}/delete-student/${roll}`, {
         method: "DELETE"
     })
     .then(res => res.json())
@@ -612,7 +614,7 @@ if (document.getElementById('studentForm')) {
     const tableBody = document.querySelector('#adminTable tbody');
 
     // Load existing data
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => res.json())
         .then(data => {
             tableBody.innerHTML = "";
@@ -641,7 +643,7 @@ if (document.getElementById('studentForm')) {
             phone: document.getElementById('phone').value
         };
 
-        fetch("http://127.0.0.1:5000/add-student", {
+        fetch(`${API_BASE}/add-student`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(studentData)
@@ -682,7 +684,7 @@ if (document.getElementById('contactForm')) {
 // ===================== REPORT PAGE LOGIC ======================
 if (document.getElementById("repAvgMarks")) {
 
-    fetch("http://127.0.0.1:5000/students")
+    fetch(`${API_BASE}/students`)
         .then(res => res.json())
         .then(data => {
 
