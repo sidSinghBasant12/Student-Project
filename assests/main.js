@@ -1,4 +1,4 @@
-const API_BASE = "https://my-backend-api-e5wi.onrender.com";
+const API_BASE = window.location.origin === "https://my-backend-api-e5wi.onrender.com" ? "" : "https://my-backend-api-e5wi.onrender.com";
 
 // =========================================================
 // ================== DASHBOARD PAGE ========================
@@ -159,7 +159,7 @@ function displayStudents(list) {
             <td>${stu.attendance}</td>
             <td>${stu.grade}</td>
             <td>
-                <button class="view-btn" onclick="location.href='student.html?roll=${stu.roll_no}'">View</button>
+                <button class="view-btn" onclick="location.href='Student.html?roll=${stu.roll_no}'">View</button>
             </td>
         `;
         tbody.appendChild(tr);
@@ -435,7 +435,7 @@ if (document.getElementById('teacherTableBody')) {
                     <td>${stu.attendance}</td>
                     <td>${stu.grade}</td>
                     <td>
-    <button class="view-btn" onclick="location.href='student.html?roll=${stu.roll_no}'">View</button>
+    <button class="view-btn" onclick="location.href='Student.html?roll=${stu.roll_no}'">View</button>
     <button class="update-btn"
         onclick="openUpdateBox('${stu.roll_no}', '${stu.marks}', '${stu.attendance}', '${stu.grade}')">
         Update
